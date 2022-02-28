@@ -30,6 +30,15 @@ class PoemsController < ApplicationController
         end
     end
 
+    delete 'poems/:id' do
+        if @poem
+            @poem.destroy
+            @poem.to_json
+        else
+            { errors: ["Poem doesn't exist"] }.to_json
+        end
+    end
+
     private
     def find_poem
         @poem = Poem.find_by_id(params[:id])
