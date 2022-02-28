@@ -1,3 +1,4 @@
-class Poet < ActiveRecord::Base 
-    
+class Poet < ActiveRecord::Base
+     has_many :poems
+
 end
