@@ -6,15 +6,15 @@ class PoemsController < ApplicationController
     end
 
     post '/poems' do
-        params {
-            poet: {
-                name: "name"
-            },
-            poem: {
-                title: "",
-                body: ""
-            }
-        }
+        # params {
+        #     poet: {
+        #         name: "name"
+        #     },
+        #     poem: {
+        #         title: "",
+        #         body: ""
+        #     }
+        # }
      
         # find or create a poet
         # use poet to create a new unsaved poem
