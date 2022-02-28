@@ -4,6 +4,8 @@ puts "🌱 Seeding spices..."
 
 ### Create poets
 rumi= Poet.create(name: "Rumi")
+wcw = Poet.create(name: "William Carlos Williams")
+rmr = Poet.create(name: "Rainer Maria Rilke")
 
 ### Create poems
 
@@ -30,6 +32,38 @@ and invite them in.
 Be grateful for whoever comes,
 because each has been sent
 as a guide from beyond.
+
+")
+
+wcw.poems.create(title: "The Red Wheelbarrow", body: "
+so much depends
+upon
+
+a red wheel
+barrow
+
+glazed with rain
+water
+
+beside the white
+chickens
+")
+
+rmr.poems.create(title: "The Beggars", body: "
+You didn't know
+what was in the heap. A visitor found
+it to contain beggars. They sell the hollow
+of their hands.
+
+They show the sightseer
+their mouths full of filth,
+and let him (he can afford it) peer
+at the mange eating away at them.
+
+In their twisted vision
+his stranger's face is skewed;
+they are pleased with their accession,
+and when he speaks they spew.
 
 ")
 
