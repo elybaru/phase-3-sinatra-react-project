@@ -12,6 +12,22 @@ const Create = () => {
     const handleFormChange = (e) => {
         setCreatePoem({ ...createPoem, [e.target.name]: e.target.value })
     }
+    console.log(createPoem)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        // fetch('BACKENDURL', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(createPoem)
+        // })
+        //     .then(resp => resp.json())
+        //     .then(data => {
+        //         setCreatePoem(defaultPoemForm)
+        //     })
+    }
 
 
     return (
@@ -19,15 +35,40 @@ const Create = () => {
             <h2>Create Poem</h2>
             <p>Create or submit a new poem below</p>
             <form onSubmit={handleSubmit}>
-                <label>
-                    Title
-                <input
-                        type='text'
-                        name='title'
-                        value={createPoem.title}
-                        onChange={handleFormChange}
-                    />
-                </label>
+                <div>
+                    <label>
+                        Title
+                        <input
+                            type='text'
+                            name='title'
+                            value={createPoem.title}
+                            onChange={handleFormChange}
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Author
+                        <input
+                            type='text'
+                            name='author'
+                            value={createPoem.author}
+                            onChange={handleFormChange}
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Body
+                        <input
+                            type='text'
+                            name='author'
+                            value={createPoem.body}
+                            onChange={handleFormChange}
+                        />
+                    </label>
+                </div>
+                <input type='submit' />
             </form>
         </div>
     )
