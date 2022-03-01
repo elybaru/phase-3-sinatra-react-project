@@ -43,3 +43,19 @@ GET /poets/:id (for sending back a poet and all of their poems)
 POST /poems
 
 DELETE /poems:/id
+
+
+### Localstorage
+- If logout, clears local storage
+- When login, 
+- Create a route called
+- Create a route in 
+
+
+### 
+Create form for login
+Validate that you get data back in console.log
+Put users id into local storage
+once that is done, need to check if a user is loggedin through local storage
+If you click login, it should redirect 
+
