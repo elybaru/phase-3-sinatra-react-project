@@ -4,7 +4,7 @@ const Create = () => {
 
     const defaultPoemForm = {
         title: "",
-        author: "",
+        poet: "",
         body: ""
     }
     const [createPoem, setCreatePoem] = useState(defaultPoemForm)
@@ -16,17 +16,18 @@ const Create = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // fetch('BACKENDURL', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(createPoem)
-        // })
-        //     .then(resp => resp.json())
-        //     .then(data => {
-        //         setCreatePoem(defaultPoemForm)
-        //     })
+        fetch('http://localhost:9292/poems', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(createPoem)
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+                setCreatePoem(defaultPoemForm)
+            })
     }
 
 
@@ -51,8 +52,8 @@ const Create = () => {
                         Author
                         <input
                             type='text'
-                            name='author'
-                            value={createPoem.author}
+                            name='poet'
+                            value={createPoem.poet}
                             onChange={handleFormChange}
                         />
                     </label>
@@ -62,7 +63,7 @@ const Create = () => {
                         Body
                         <input
                             type='text'
-                            name='author'
+                            name='body'
                             value={createPoem.body}
                             onChange={handleFormChange}
                         />

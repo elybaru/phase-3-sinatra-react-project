@@ -6,27 +6,13 @@ class PoemsController < ApplicationController
     end
 
     post '/poems' do
-        # params {
-        #     poet: {
-        #         name: "name"
-        #     },
-        #     poem: {
-        #         title: "",
-        #         body: ""
-        #     }
-        # }
-     
-        # find or create a poet
-        # use poet to create a new unsaved poem
-        # if saved, return the poem json
-        # if unsaved (bad data), return errors
-        @poet = Poem.find_or_create_by(name: params[:poet])
-        @poem = poet.poems.build(params[:poem])
+        @poet = Poet.find_or_create_by(name: params[:poet])
+        @poem = @poet.poems.build(title: params[:title], body: params[:body])
 
-        if poet.save
-            @poet.to_json(include: [:poet])
+        if @poem.save
+            @poem.to_json(include: [:poet])
         else
-            {errors: @poet.errors.full_messages}.to_json
+            {errors: @poem.errors.full_messages}.to_json
         end
     end
 

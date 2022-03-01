@@ -9,7 +9,7 @@ rmr = Poet.create(name: "Rainer Maria Rilke")
 
 ### Create poems
 
-rumi.poems.create(title: "The Guest House", content: "
+rumi.poems.create(title: "The Guest House", body: "
 This being human is a guest house.
 Every morning a new arrival.
 
