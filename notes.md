@@ -32,3 +32,14 @@ Users
 has_many poems through favorites
 has_may favorites
 name
+
+
+### Routes
+
+GET /poets (for sending back all poets)
+GET /poems (for sending back all poems)
+GET /poets/:id (for sending back a poet and all of their poems)
+
+POST /poems
+
+DELETE /poems:/id
