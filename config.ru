@@ -14,4 +14,5 @@ use Rack::JSONBodyParser
 # Our application
 use PoemsController
 use PoetsController
+use FavoritesController
 run ApplicationController
