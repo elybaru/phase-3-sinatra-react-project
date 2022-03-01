@@ -9,6 +9,7 @@ const Login = () => {
     console.log(username)
 
     const handleSubmit = e => {
+        e.preventDefault()
 
     }
 
