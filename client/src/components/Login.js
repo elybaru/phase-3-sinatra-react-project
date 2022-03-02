@@ -10,7 +10,7 @@ const Login = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-
+        console.log(`You just hit the submit button, current username is ${username}`)
     }
 
 
