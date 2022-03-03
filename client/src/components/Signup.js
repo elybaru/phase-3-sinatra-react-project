@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 
 
-const Signup = () => {
+const Signup = ({ loginUser }) => {
     const [username, setUsername] = useState("")
     const history = useHistory()
 
@@ -19,6 +19,7 @@ const Signup = () => {
             .then(resp => resp.json())
             .then(data => {
                 console.log(data)
+                loginUser(data)
                 history.push('/')
             })
     }
