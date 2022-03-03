@@ -1,12 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useHistory } from "react-router-dom";
+
 
 const Signup = () => {
+    const [username, setUsername] = useState("")
+    const history = useHistory()
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        fetch("http://localhost:9292/signup", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username })
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+                history.push('/')
+            })
+    }
+
+
     return (
         <div>
             <h2>Create an account</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
-                    <input type="text" name="username" />
+                    <input type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />
                     <input type="submit" value="Create Account" />
                 </div>
             </form>
