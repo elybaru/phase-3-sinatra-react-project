@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ loginUser }) => {
     const [username, setUsername] = useState("")
+    const [users, setUsers] = useState([])
+
+    const history = useHistory()
 
     const handleChange = (e) => {
         setUsername(e.target.value)
@@ -10,8 +14,20 @@ const Login = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(`You just hit the submit button, current username is ${username}`)
+
+        const user = users.find(user => user.name.toLowerCase() === username.toLowerCase())
+
+        if (user) {
+            loginUser(user)
+            history.push("/")
+        }
     }
+
+    useEffect(() => {
+        fetch("http://localhost:9292/users")
+            .then(resp => resp.json())
+            .then(data => setUsers(data))
+    }, [])
 
 
 

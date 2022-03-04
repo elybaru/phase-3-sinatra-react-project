@@ -52,10 +52,36 @@ DELETE /poems:/id
 - Create a route in 
 
 
-### 
+### Login
 Create form for login
 Validate that you get data back in console.log
 Put users id into local storage
 once that is done, need to check if a user is loggedin through local storage
 If you click login, it should redirect 
+
+
+### API
+call an instance method within a .to_json for every instance 
+
+Test endpoints
+Seed data
+
+Returns a list of all titles by Emily Dickinson:
+"https://poetrydb.org/author/Emily Dickinson/title"
+
+Finally some poems!
+https://poetrydb.org/author/Charlotte%20Bronte
+
+More poems!
+https://poetrydb.org/author/Bronte
+
+
+### Thursday 3/3/22
+- Login 
+- API
+- Search Poems
+- Search Poets
+- Save to favorites
+- Create and delete poem
+
 
