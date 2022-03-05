@@ -8,6 +8,7 @@ import Create from "./components/Create";
 import Favorites from "./components/Favorites";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Poet from "./components/Poet";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -16,7 +17,7 @@ function App() {
   const [poets, setPoets] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:9292/poets/")
+    fetch("http://localhost:9292/poets")
       .then(resp => resp.json())
       .then(data => setPoets(data))
   }, [])
@@ -69,6 +70,7 @@ function App() {
         </Route>
 
         <Route exact path="/poets/:id">
+          <Poet />
         </Route>
 
         <Route exact path="/create">
