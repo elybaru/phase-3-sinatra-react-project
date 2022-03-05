@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
-const Login = ({ loginUser }) => {
+const Login = ({ loginUser, loggedIn }) => {
     const [username, setUsername] = useState("")
     const [users, setUsers] = useState([])
 
@@ -21,13 +21,19 @@ const Login = ({ loginUser }) => {
             loginUser(user)
             history.push("/")
         }
+        else {
+            return "Username not found, please sign up."
+        }
     }
 
     useEffect(() => {
+        if (loggedIn) {
+            return history.push("/poems")
+        }
         fetch("http://localhost:9292/users")
             .then(resp => resp.json())
             .then(data => setUsers(data))
-    }, [])
+    }, [loggedIn])
 
 
 

@@ -1,6 +1,9 @@
 import React from 'react'
 
-const Poems = () => {
+const Poems = ({ poems }) => {
+
+    console.log(poems)
+
     return (
         <div>
             <h1>Poems</h1>

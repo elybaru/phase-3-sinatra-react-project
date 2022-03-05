@@ -12,6 +12,22 @@ import Signup from "./components/Signup";
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  const [poems, setPoems] = useState([])
+  const [poets, setPoets] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/poets/")
+      .then(resp => resp.json())
+      .then(data => setPoets(data))
+  }, [])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/poems")
+      .then(resp => resp.json())
+      .then(data => setPoems(data))
+
+  }, [])
+  console.log(poems)
 
   const loginUser = user => {
     setCurrentUser(user);
@@ -42,14 +58,14 @@ function App() {
       <Switch>
 
         <Route exact path="/poems">
-          <Poems />
+          <Poems poems={poems} />
         </Route>
 
         <Route exact path="/poems/:id">
         </Route>
 
         <Route exact path="/poets">
-          <Poets />
+          <Poets poets={poets} />
         </Route>
 
         <Route exact path="/poets/:id">
@@ -64,7 +80,7 @@ function App() {
         </Route>
 
         <Route exact path="/login">
-          <Login loginUser={loginUser} />
+          <Login loginUser={loginUser} loggedIn={loggedIn} />
         </Route >
 
         <Route exact path="/signup">

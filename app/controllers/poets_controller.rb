@@ -1,8 +1,14 @@
+require 'pry'
+
 class PoetsController < ApplicationController
 
-    get 'poets/:id' do 
+    get '/poets' do
+        Poet.all.to_json
+    end
+    
+    get '/poets/:id' do 
         find_poet 
-        @poet.to_json(:include [:poems])
+        @poet.to_json(include: [:poems])
     end
 
     private

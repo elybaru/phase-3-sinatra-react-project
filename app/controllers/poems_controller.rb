@@ -1,9 +1,14 @@
 class PoemsController < ApplicationController
 
     get '/poems' do 
-        @poems = Poem.first
+        @poems = Poem.all
         # @poems.to_json(include: [:poet, :lines])
         @poems.to_json(methods: [:lines], include: [:poet])
+    end
+
+    get '/poems/:id' do
+        @poem = Poem.find(params[:id])
+        @poem.to_json
     end
 
     post '/poems' do

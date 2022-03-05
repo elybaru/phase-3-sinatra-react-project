@@ -76,12 +76,10 @@ More poems!
 https://poetrydb.org/author/Bronte
 
 
-### Thursday 3/3/22
-- Login 
-- API
-- Search Poems
-- Search Poets
-- Save to favorites
-- Create and delete poem
+### Revisions/ Client app flow
+- Poems component: search for a poem by title or author
+- Poets component: A list of all the poets
+    - When you click on a poet name, you get a list of all their poems
+    - When you click on a poem, you're taken to a new component 
 
 
