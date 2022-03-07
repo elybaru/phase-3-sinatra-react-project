@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Poems from "./components/Poems";
 import Poets from "./components/Poets";
@@ -61,15 +61,15 @@ function App() {
         </Route>
 
         <Route exact path="/poems/:id">
-          <Poem />
+          {loggedIn ? <Poem /> : <Redirect to="/login" />}
         </Route>
 
         <Route exact path="/poets">
-          <Poets />
+          {loggedIn ? <Poets /> : <Redirect to="/login" />}
         </Route>
 
         <Route exact path="/poets/:id">
-          <Poet />
+          {loggedIn ? <Poet /> : <Redirect to="/login" />}
         </Route>
 
         <Route exact path="/create">

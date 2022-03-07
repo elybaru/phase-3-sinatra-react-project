@@ -94,18 +94,15 @@ shops.to_json(include: {
 
 
 
-### Issues
-
-Login-?
-
-Favorites/ connection to user?
-
-Poem- how to pass props and navlink?
 
 
-###
-Why null for name when creating a poem (for poet name)
+### Issues remaining
+- Why null for name when creating a poem (for poet name)
 Some constraint for not allow that to happen, unless it has a value
+
+- Only get back title from list of poets
+
+- Favoriting poems and connecting with each user
 
 
 
