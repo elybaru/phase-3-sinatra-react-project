@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 const Login = ({ loginUser, loggedIn }) => {
     const [username, setUsername] = useState("")
     const [users, setUsers] = useState([])
+    console.log(users)
 
     const history = useHistory()
 

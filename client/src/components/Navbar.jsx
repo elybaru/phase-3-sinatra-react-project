@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Login from "./Login";
 
-const Navbar = ({ loggedIn, logoutUser }) => {
+const Navbar = ({ loggedIn, logoutUser, currentUser }) => {
 
     const logout = e => {
         e.preventDefault();
@@ -18,7 +18,7 @@ const Navbar = ({ loggedIn, logoutUser }) => {
                 <NavLink to="/poets" className="menuItems">Poets</NavLink>
                 <NavLink to="/create" className="menuItems">Create</NavLink>
                 <NavLink to="/favorites" className="menuItems">Favorites</NavLink>
-                <a href="#" onClick={logout}>Logout</a>
+                <button onClick={logout}>Logout</button>
             </div>
         )
     }
@@ -36,6 +36,9 @@ const Navbar = ({ loggedIn, logoutUser }) => {
         <div>
             <div>
                 <h1 className="logo">Verses</h1>
+            </div>
+            <div>
+                {currentUser.name ? <h3>Hello, {currentUser.name}</h3> : null}
             </div>
             {loggedIn ? loggedInLinks() : loggedOutLinks()}
 

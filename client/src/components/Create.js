@@ -4,7 +4,7 @@ const Create = () => {
 
     const defaultPoemForm = {
         title: "",
-        poet: "",
+        author: "",
         body: ""
     }
     const [createPoem, setCreatePoem] = useState(defaultPoemForm)
@@ -52,8 +52,8 @@ const Create = () => {
                         Author
                         <input
                             type='text'
-                            name='poet'
-                            value={createPoem.poet}
+                            name='author'
+                            value={createPoem.author}
                             onChange={handleFormChange}
                         />
                     </label>

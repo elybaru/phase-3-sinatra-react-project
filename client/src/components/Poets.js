@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Poets = ({ poets }) => {
+const Poets = () => {
+    const [poets, setPoets] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:9292/poets")
+            .then(resp => resp.json())
+            .then(data => setPoets(data))
+    }, [])
+
     console.log(poets)
     return (
         <div>
@@ -9,7 +17,7 @@ const Poets = ({ poets }) => {
             <p>View a list of poets here, and search for poets</p>
             <div>
                 {poets ? poets.map(poet => {
-                    return <NavLink to={`/poets/${poet.id}`}>{poet.name}</NavLink>
+                    return <NavLink to={`/poets/${poet.id}`} key={poet.id}>{poet.name}</NavLink>
                 }) : null}
             </div>
         </div>

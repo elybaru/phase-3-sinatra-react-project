@@ -20,7 +20,7 @@ const Poet = () => {
         <div>
             <h1>{poems.name}</h1>
             <div>
-                {poems ? poems.poems.map(poem => {
+                {poems.poems ? poems.poems.map(poem => {
                     return <NavLink to={`/poems/${poem.id}`}>{poem.title}</NavLink>
 
                 }) : null}

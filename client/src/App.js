@@ -9,26 +9,24 @@ import Favorites from "./components/Favorites";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Poet from "./components/Poet";
+import Poem from "./components/Poem";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [poems, setPoems] = useState([])
-  const [poets, setPoets] = useState([])
+  // const [poems, setPoems] = useState([])
 
-  useEffect(() => {
-    fetch("http://localhost:9292/poets")
-      .then(resp => resp.json())
-      .then(data => setPoets(data))
-  }, [])
 
-  useEffect(() => {
-    fetch("http://localhost:9292/poems")
-      .then(resp => resp.json())
-      .then(data => setPoems(data))
 
-  }, [])
-  console.log(poems)
+  // useEffect(() => {
+  //   fetch("http://localhost:9292/poems")
+  //     .then(resp => resp.json())
+  //     .then(data => setPoems(data))
+
+  // }, [])
+  // console.log(poems)
+
+  console.log(currentUser)
 
   const loginUser = user => {
     setCurrentUser(user);
@@ -55,18 +53,19 @@ function App() {
 
   return (
     <div>
-      <NavBar loggedIn={loggedIn} logoutUser={logoutUser} />
+      <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={currentUser} />
       <Switch>
 
         <Route exact path="/poems">
-          <Poems poems={poems} />
+          <Poems />
         </Route>
 
         <Route exact path="/poems/:id">
+          <Poem />
         </Route>
 
         <Route exact path="/poets">
-          <Poets poets={poets} />
+          <Poets />
         </Route>
 
         <Route exact path="/poets/:id">

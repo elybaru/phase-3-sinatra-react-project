@@ -82,4 +82,30 @@ https://poetrydb.org/author/Bronte
     - When you click on a poet name, you get a list of all their poems
     - When you click on a poem, you're taken to a new component 
 
+Routes
+poet/poems
+
+###
+shops.to_json(include: {
+      items: { 
+        except: [:updated_at]
+      }
+    })
+
+
+
+### Issues
+
+Login-?
+
+Favorites/ connection to user?
+
+Poem- how to pass props and navlink?
+
+
+###
+Why null for name when creating a poem (for poet name)
+Some constraint for not allow that to happen, unless it has a value
+
+
 
