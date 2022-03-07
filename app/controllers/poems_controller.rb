@@ -8,7 +8,7 @@ class PoemsController < ApplicationController
 
     get '/poems/:id' do
         @poem = Poem.find(params[:id])
-        @poem.to_json
+        @poem.to_json(methods: [:lines])
     end
 
     post '/poems' do

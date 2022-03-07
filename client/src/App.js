@@ -61,7 +61,7 @@ function App() {
         </Route>
 
         <Route exact path="/poems/:id">
-          {loggedIn ? <Poem /> : <Redirect to="/login" />}
+          {loggedIn ? <Poem currentUser={currentUser} /> : <Redirect to="/login" />}
         </Route>
 
         <Route exact path="/poets">
@@ -73,11 +73,11 @@ function App() {
         </Route>
 
         <Route exact path="/create">
-          <Create />
+          {loggedIn ? <Create /> : <Redirect to="/login" />}
         </Route>
 
         <Route exact path="/favorites">
-          <Favorites />
+          {loggedIn ? <Favorites currentUser={currentUser} /> : <Redirect to="/login" />}
         </Route>
 
         <Route exact path="/login">

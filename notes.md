@@ -104,5 +104,14 @@ Some constraint for not allow that to happen, unless it has a value
 
 - Favoriting poems and connecting with each user
 
+- Need to return unsuccessful login message on login page
+
+- the poem route only returns the poet ID, how to display the poet name?
+
+  // focus on how front end interacts with backend, restful conventions - Sinatra is the main thing
+    // Review active record- .build, .create, has_many etc
+    // may ask to create an instance method
+    // what a class method is
+
 
 

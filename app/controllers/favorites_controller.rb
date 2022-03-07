@@ -1,7 +1,12 @@
 class FavoritesController < ApplicationController
 
-    get 'favorites' do
+    get '/favorites' do
         find_favorite
+        @favorite.to_json
+    end
+
+    post '/favorites' do
+        @favorite = Favorite.find_or_create_by(user_id: params[:user_id], poem_id: params[:poem_id])
         @favorite.to_json
     end
 
