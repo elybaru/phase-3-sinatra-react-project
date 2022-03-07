@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { NavLink } from "react-router-dom";
 
 const Favorites = ({ currentUser }) => {
+    const [favorites, setFavorites] = useState([])
+
     console.log(currentUser)
+    const updateFavorites = () => {
+        setFavorites(currentUser.poems)
+    }
+    console.log(favorites)
+
+    const deleteFavorite = e => {
+        console.log("Delete favorite clicked")
+    }
 
     // pass down currentuser in props
     // fetch favorites by user, interpolate
@@ -16,11 +27,16 @@ const Favorites = ({ currentUser }) => {
 
 
 
-
-
     return (
         <div>
-            <h1>I am the Favorites component- view and edit your favorite poems list here (and click on a poem to view it)</h1>
+            <h1>Favorites</h1>
+            {currentUser.poems ?
+                currentUser.poems.map(poem => {
+                    return <div>
+                        <NavLink to={`/poems/${poem.id}`}>{poem.title}</NavLink>
+                        <button onClick={deleteFavorite}>Remove from favorites</button>
+                    </div>
+                }) : null}
         </div>
     )
 }
