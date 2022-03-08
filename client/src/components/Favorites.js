@@ -30,13 +30,15 @@ const Favorites = ({ currentUser }) => {
     return (
         <div>
             <h1>Favorites</h1>
-            {currentUser.poems ?
-                currentUser.poems.map(poem => {
-                    return <div>
-                        <NavLink to={`/poems/${poem.id}`}>{poem.title}</NavLink>
-                        <button onClick={deleteFavorite}>Remove from favorites</button>
-                    </div>
-                }) : null}
+            <div className="content-box">
+                {currentUser.poems ?
+                    currentUser.poems.map(poem => {
+                        return <div>
+                            <NavLink to={`/poems/${poem.id}`}>{poem.title}</NavLink>
+                            <button onClick={deleteFavorite}>Remove from favorites</button>
+                        </div>
+                    }) : null}
+            </div>
         </div>
     )
 }
