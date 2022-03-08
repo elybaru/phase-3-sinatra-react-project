@@ -116,9 +116,14 @@ Some constraint for not allow that to happen, unless it has a value
 favorite is the join table
 
 ### Final issues
-- Delete favorites
 - Create - null?
 - Refresh issue for favorites
+- Poem favorite visible/prevent duplicates
+- Active routes to target through CSS for styles
+
+    // ♡
+    // ❤️
+    // ❤️
 
 
 

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, NavLink } from 'react-router-dom'
 
+
 const Poet = () => {
+
+
+
     const [poems, setPoems] = useState([])
 
     const params = useParams()

@@ -3,12 +3,12 @@ class PoemsController < ApplicationController
     get '/poems' do 
         @poems = Poem.all
         # @poems.to_json(include: [:poet, :lines])
-        @poems.to_json(methods: [:lines], include: [:poet])
+        @poems.to_json( include: [:poet])
     end
 
     get '/poems/:id' do
         @poem = Poem.find(params[:id])
-        @poem.to_json(methods: [:lines])
+        @poem.to_json
     end
 
     post '/poems' do

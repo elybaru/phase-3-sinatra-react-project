@@ -38,7 +38,7 @@ const Poem = ({ currentUser }) => {
             {poem ?
                 <div>
                     <h3> {poem.title} </h3>
-                    {poem.lines.map(line => {
+                    {JSON.parse(poem.body).map(line => {
                         return <p>{line}</p>
                     })}
                 </div>

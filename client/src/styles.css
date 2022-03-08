@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap');
 
+body {
+    font-family: 'Poppins';
+    font-size: 16px;
+}
+
 a, a:visited, button {
     color: #313131;
     font-size: 16px;
@@ -22,8 +27,9 @@ h1 {
     border-radius: 5px;
     max-width: 50%;
     margin: auto;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: left;
 }
 
 .logo {
@@ -31,4 +37,30 @@ h1 {
     color: #E4E4E4;
     font-family: 'Poppins';
     font-weight: 600;
+}
+
+.input-label {
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+input {
+    width: 100%;
+    background: #FDFDFD;
+    border: 0px solid white;
+    height: 32px;
+}
+
+.large-text-input {
+    height: 300px;
+}
+
+.submit-poem {
+    background: #222020;
+    color: #FDFDFD;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 10px 0px;
 }

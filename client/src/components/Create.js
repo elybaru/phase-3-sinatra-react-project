@@ -21,7 +21,14 @@ const Create = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(createPoem)
+            body: JSON.stringify(
+                {
+                    title: createPoem.title,
+                    poet: createPoem.poet,
+                    body: JSON.stringify([createPoem.body])
+                    // Because the backend expects it as a stringified JSON object. Other way is to make coniditional in backend.
+                }
+            )
         })
             .then(resp => resp.json())
             .then(data => {
@@ -34,43 +41,46 @@ const Create = () => {
     return (
         <div>
             <h2>Create Poem</h2>
-            <p>Create or submit a new poem below</p>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>
-                        Title
-                        <input
-                            type='text'
-                            name='title'
-                            value={createPoem.title}
-                            onChange={handleFormChange}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Author
-                        <input
-                            type='text'
-                            name='author'
-                            value={createPoem.author}
-                            onChange={handleFormChange}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Body
-                        <input
-                            type='text'
-                            name='body'
-                            value={createPoem.body}
-                            onChange={handleFormChange}
-                        />
-                    </label>
-                </div>
-                <input type='submit' />
-            </form>
+            <div className="content-box">
+                <p>Create or submit a new poem below</p>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>
+                            <div className="input-label">Title</div>
+                            <input
+                                type='text'
+                                name='title'
+                                value={createPoem.title}
+                                onChange={handleFormChange}
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <div className="input-label">Author</div>
+                            <input
+                                type='text'
+                                name='poet'
+                                value={createPoem.author}
+                                onChange={handleFormChange}
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <div className="input-label">Body</div>
+                            <input
+                                className="large-text-input"
+                                type='text'
+                                name='body'
+                                value={createPoem.body}
+                                onChange={handleFormChange}
+                            />
+                        </label>
+                    </div>
+                    <input type='submit' className="submit-poem" />
+                </form>
+            </div>
         </div>
     )
 }
