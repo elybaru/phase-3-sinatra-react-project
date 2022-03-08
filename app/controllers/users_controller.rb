@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     get '/users' do
-        User.all.to_json
+        User.all.to_json(include: [:poems, :favorites])
     end
     
     get '/users/:id' do

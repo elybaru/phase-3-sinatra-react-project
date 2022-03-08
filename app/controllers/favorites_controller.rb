@@ -10,6 +10,12 @@ class FavoritesController < ApplicationController
         @favorite.to_json
     end
 
+    delete '/favorites/:id' do
+        @favorite = Favorite.find(params[:id])
+        @favorite.destroy
+        @favorite.to_json
+    end
+
     private
     def find_favorite
         @favorite = Favorite.find_by_id(params[:id])

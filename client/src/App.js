@@ -28,6 +28,14 @@ function App() {
   // }, [])
   // console.log(poems)
 
+  const removeFavorite = (favorite) => {
+    setCurrentUser({
+      ...currentUser,
+      poems: currentUser.poems.filter(poem => poem.id != favorite.poem_id),
+      favorites: currentUser.favorites.filter(fav => fav.id != favorite.id)
+    })
+  }
+
   console.log(currentUser)
 
   const Bodywrapper = styled.div`
@@ -65,9 +73,9 @@ function App() {
         <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={currentUser} />
         <Switch>
 
-          <Route exact path="/poems">
+          {/* <Route exact path="/poems">
             <Poems />
-          </Route>
+          </Route> */}
 
           <Route exact path="/poems/:id">
             {loggedIn ? <Poem currentUser={currentUser} /> : <Redirect to="/login" />}
@@ -86,7 +94,7 @@ function App() {
           </Route>
 
           <Route exact path="/favorites">
-            {loggedIn ? <Favorites currentUser={currentUser} /> : <Redirect to="/login" />}
+            {loggedIn ? <Favorites currentUser={currentUser} removeFavorite={removeFavorite} /> : <Redirect to="/login" />}
           </Route>
 
           <Route exact path="/login">

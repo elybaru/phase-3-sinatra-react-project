@@ -19,7 +19,7 @@ const Navbar = ({ loggedIn, logoutUser, currentUser }) => {
             <div>
                 <Navbar>
                     <NavLink to="/" className="menuItems">Home</NavLink>
-                    <NavLink to="/poems" className="menuItems">Poems</NavLink>
+                    {/* <NavLink to="/poems" className="menuItems">Poems</NavLink> */}
                     <NavLink to="/poets" className="menuItems">Poets</NavLink>
                     <NavLink to="/create" className="menuItems">Create</NavLink>
                     <NavLink to="/favorites" className="menuItems">Favorites</NavLink>

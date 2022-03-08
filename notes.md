@@ -113,5 +113,12 @@ Some constraint for not allow that to happen, unless it has a value
     // may ask to create an instance method
     // what a class method is
 
+favorite is the join table
+
+### Final issues
+- Delete favorites
+- Create - null?
+- Refresh issue for favorites
+
 
 

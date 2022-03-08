@@ -4,7 +4,7 @@ const Create = () => {
 
     const defaultPoemForm = {
         title: "",
-        author: "",
+        poet: "",
         body: ""
     }
     const [createPoem, setCreatePoem] = useState(defaultPoemForm)
