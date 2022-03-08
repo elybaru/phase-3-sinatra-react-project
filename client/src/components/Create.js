@@ -71,7 +71,7 @@ const Create = () => {
                             <div className="input-label">Body</div>
                             <input
                                 className="large-text-input"
-                                type='text'
+                                type='textarea'
                                 name='body'
                                 value={createPoem.body}
                                 onChange={handleFormChange}
