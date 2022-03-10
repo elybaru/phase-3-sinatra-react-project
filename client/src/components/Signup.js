@@ -29,9 +29,9 @@ const Signup = ({ loginUser }) => {
         <div>
             <h2>Create an account</h2>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="content-box">
                     <input type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />
-                    <input type="submit" value="Create Account" />
+                    <input type="submit" value="Create Account" className="submit-poem" />
                 </div>
             </form>
 

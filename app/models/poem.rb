@@ -6,4 +6,6 @@ class Poem < ActiveRecord::Base
     # def lines
     #     JSON.parse(self.body)
     # end
+
+    
 end

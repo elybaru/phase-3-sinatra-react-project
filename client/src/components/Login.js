@@ -41,12 +41,13 @@ const Login = ({ loginUser, loggedIn }) => {
     return (
         <div>
             <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <lablel>Username</lablel>
-                <input type="text" name="username" id="username" onChange={handleChange} value={username} />
-                <input type="submit" value="Login" />
-            </form>
-
+            <div className="content-box">
+                <form onSubmit={handleSubmit}>
+                    <lablel>Username</lablel>
+                    <input type="text" name="username" id="username" onChange={handleChange} value={username} />
+                    <input type="submit" value="Login" className="submit-poem" />
+                </form>
+            </div>
         </div>
     )
 }
