@@ -42,7 +42,6 @@ const Create = () => {
         <div>
             <h2>Create Poem</h2>
             <div className="content-box">
-                <p>Create or submit a new poem below</p>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>
