@@ -14,7 +14,6 @@ const Poets = () => {
     return (
         <div>
             <h1>Poets</h1>
-            <p>View a list of poets here, and search for poets</p>
             <div>
                 {poets ? poets.map(poet => {
                     return <div><NavLink to={`/poets/${poet.id}`} key={poet.id}>{poet.name}</NavLink></div>

@@ -15,8 +15,9 @@ const Poem = ({ currentUser }) => {
             .then(data => setPoem(data))
     }, [])
 
-    console.log(id)
-    console.log(currentUser)
+    // console.log(id)
+    // console.log(currentUser)
+    console.log(poem)
 
 
     // Do another fetch in userEffect. need a useEffect for favorites by user if this poem is on the user's favorites. Store as state as a boolean for isFavorite and that conditionally impacts button
@@ -43,6 +44,7 @@ const Poem = ({ currentUser }) => {
             {poem ?
                 <div className="content-box">
                     <h3> {poem.title} </h3>
+                    <h4>{poem.poet.name}</h4>
                     {JSON.parse(poem.body).map(line => {
                         return <p>{line}</p>
                     })}

@@ -72,6 +72,7 @@ const Create = () => {
                             <input
                                 className="large-text-input"
                                 type='textarea'
+                                rows={30}
                                 name='body'
                                 value={createPoem.body}
                                 onChange={handleFormChange}
