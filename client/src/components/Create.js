@@ -69,9 +69,10 @@ const Create = () => {
                     <div>
                         <label>
                             <div className="input-label">Body</div>
-                            <input
+                            <textarea
                                 className="large-text-input"
                                 type='textarea'
+                                cols={30}
                                 rows={30}
                                 name='body'
                                 value={createPoem.body}

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 
-const Poem = ({ currentUser }) => {
+const Poem = ({ currentUser, deleteFavorite, handleAddFave, poems, setPoems }) => {
     const [poem, setPoem] = useState(null)
+    const [fav, setFav] = useState(false)
 
     // const params = useParams()
     // const poemId = poems.id
@@ -10,14 +11,36 @@ const Poem = ({ currentUser }) => {
     const { id } = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:9292/poems/${id}`)
-            .then(resp => resp.json())
-            .then(data => setPoem(data))
+        //will only fetch the first time
+        const foundPoem = poems.find(poem => poem.id == id)
+        if (foundPoem) {
+            setPoem(foundPoem)
+        } else {
+            fetch(`http://localhost:9292/poems/${id}`)
+                .then(resp => resp.json())
+                .then(data => {
+                    setPoem(data)
+                    setPoems([...poems, data])
+                })
+        }
+
+
     }, [])
 
+    useEffect(() => {
+        isFavorite()
+    }, [currentUser.favorites])
+
     // console.log(id)
-    // console.log(currentUser)
+    console.log(currentUser)
     console.log(poem)
+
+    const isFavorite = () => {
+        setFav(currentUser.favorites.find(fav => fav.poem_id == id))
+        console.log(currentUser.favorites.find(fav => fav.poem_id == id))
+    }
+
+
 
 
     // Do another fetch in userEffect. need a useEffect for favorites by user if this poem is on the user's favorites. Store as state as a boolean for isFavorite and that conditionally impacts button
@@ -35,7 +58,7 @@ const Poem = ({ currentUser }) => {
             })
         })
             .then(resp => resp.json())
-            .then(data => console.log(data))
+            .then(data => handleAddFave(data, poem))
         console.log("favorite button")
     }
     return (
@@ -50,7 +73,8 @@ const Poem = ({ currentUser }) => {
                     })}
                 </div>
                 : null}
-            <button onClick={handleFavorite}>Favorite</button>
+            {fav ? <button onClick={() => deleteFavorite(poem.id)}>Remove from favorites</button> : <button onClick={handleFavorite}>Favorite</button>}
+
         </div>
     )
 }

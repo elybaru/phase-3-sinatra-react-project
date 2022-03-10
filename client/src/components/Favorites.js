@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 
-const Favorites = ({ currentUser, removeFavorite }) => {
+const Favorites = ({ currentUser, removeFavorite, deleteFavorite }) => {
     const [favorites, setFavorites] = useState([])
     const [favoritePoems, setFavoritePoems] = useState([])
 
 
-    // console.log(currentUser)
+    console.log(currentUser)
 
     useEffect(() => {
         fetch(`http://localhost:9292/favorites`)
@@ -35,18 +35,7 @@ const Favorites = ({ currentUser, removeFavorite }) => {
 
     // console.log(favoritePoems)
 
-    const deleteFavorite = poemId => {
-        const favorite = currentUser.favorites.find(fav => fav.poem_id === poemId)
-        handleDelete(favorite)
-    }
 
-    const handleDelete = (favorite) => {
-        fetch(`http://localhost:9292/favorites/${favorite.id}`, {
-            method: "DELETE"
-        })
-            .then(resp => resp.json())
-            .then(data => removeFavorite(data))
-    }
 
     return (
         <div>
