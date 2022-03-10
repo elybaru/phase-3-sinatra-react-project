@@ -14,7 +14,7 @@ const Poets = () => {
     return (
         <div>
             <h1>Poets</h1>
-            <div>
+            <div className="content-box-poets">
                 {poets ? poets.map(poet => {
                     return <div><NavLink to={`/poets/${poet.id}`} key={poet.id}>{poet.name}</NavLink></div>
                 }) : null}

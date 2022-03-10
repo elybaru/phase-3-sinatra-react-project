@@ -43,7 +43,7 @@ const Navbar = ({ loggedIn, logoutUser, currentUser }) => {
             <div>
                 <h2 className="logo">Verses</h2>
             </div>
-            <div>
+            <div className="welcome-message">
                 {currentUser.name ? <h3>Hello, {currentUser.name}</h3> : null}
             </div>
             {loggedIn ? loggedInLinks() : loggedOutLinks()}
