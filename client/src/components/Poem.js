@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as regularHeart } from '@fortawesome/fontawesome-free-regular';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+
 
 const Poem = ({ currentUser, deleteFavorite, handleAddFave, poems, setPoems }) => {
     const [poem, setPoem] = useState(null)
@@ -71,9 +75,16 @@ const Poem = ({ currentUser, deleteFavorite, handleAddFave, poems, setPoems }) =
                     {JSON.parse(poem.body).map(line => {
                         return <p>{line}</p>
                     })}
+                    <div className="heart-poem-like">
+                        {fav ? <FontAwesomeIcon icon={solidHeart} onClick={() => deleteFavorite(poem.id)} /> :
+                            <FontAwesomeIcon onClick={handleFavorite} icon={regularHeart} />}
+                    </div>
                 </div>
                 : null}
-            {fav ? <button onClick={() => deleteFavorite(poem.id)}>Remove from favorites</button> : <button onClick={handleFavorite}>Favorite</button>}
+
+
+
+            {/* {fav ? <button onClick={() => deleteFavorite(poem.id)}>Remove from favorites</button> : <button onClick={handleFavorite}>Favorite</button>} */}
 
         </div>
     )

@@ -12,11 +12,12 @@ import Poet from "./components/Poet";
 import Poem from "./components/Poem";
 import styled from 'styled-components';
 import styles from './styles.css';
+import Welcome from "./components/Welcome";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  // const [poems, setPoems] = useState([])
+  const [poems, setPoems] = useState([])
 
 
 
@@ -66,6 +67,27 @@ function App() {
 
   }, [])
 
+  const deleteFavorite = poemId => {
+    const favorite = currentUser.favorites.find(fav => fav.poem_id === poemId)
+    handleDelete(favorite)
+  }
+
+  const handleDelete = (favorite) => {
+    fetch(`http://localhost:9292/favorites/${favorite.id}`, {
+      method: "DELETE"
+    })
+      .then(resp => resp.json())
+      .then(data => removeFavorite(data))
+  }
+
+  const handleAddFave = (data, poem) => {
+    setCurrentUser({
+      ...currentUser,
+      favorites: [...currentUser.favorites, data],
+      poems: [...currentUser.poems, poem]
+    })
+  }
+
 
   return (
     <div>
@@ -78,7 +100,7 @@ function App() {
           </Route> */}
 
           <Route exact path="/poems/:id">
-            {loggedIn ? <Poem currentUser={currentUser} /> : <Redirect to="/login" />}
+            {loggedIn ? <Poem currentUser={currentUser} deleteFavorite={deleteFavorite} handleAddFave={handleAddFave} poems={poems} setPoems={setPoems} /> : <Redirect to="/login" />}
           </Route>
 
           <Route exact path="/poets">
@@ -94,7 +116,7 @@ function App() {
           </Route>
 
           <Route exact path="/favorites">
-            {loggedIn ? <Favorites currentUser={currentUser} removeFavorite={removeFavorite} /> : <Redirect to="/login" />}
+            {loggedIn ? <Favorites currentUser={currentUser} removeFavorite={removeFavorite} deleteFavorite={deleteFavorite} /> : <Redirect to="/login" />}
           </Route>
 
           <Route exact path="/login">
@@ -106,6 +128,7 @@ function App() {
           </Route>
 
           <Route exact path="/">
+            <Welcome />
           </Route>
         </Switch>
       </Bodywrapper>

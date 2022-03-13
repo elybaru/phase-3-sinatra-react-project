@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as regularHeart } from '@fortawesome/fontawesome-free-regular';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 
 const Favorites = ({ currentUser, removeFavorite, deleteFavorite }) => {
     const [favorites, setFavorites] = useState([])
@@ -43,11 +46,20 @@ const Favorites = ({ currentUser, removeFavorite, deleteFavorite }) => {
             <div className="content-box">
                 {favorites ?
                     favorites.map(favorite => {
+                        return <div className="title-line">
+                            <NavLink to={`/poems/${favorite.poem_id}`} key={favorite.poem_id}>{favorite.poem.title}</NavLink>
+                            <FontAwesomeIcon icon={solidHeart} onClick={() => deleteFavorite(favorite.poem_id)} />
+                        </div>
+                    }) : null}
+
+
+                {/* {favorites ?
+                    favorites.map(favorite => {
                         return <div>
                             <NavLink to={`/poems/${favorite.poem_id}`} key={favorite.poem_id}>{favorite.poem.title}</NavLink>
                             <button onClick={() => deleteFavorite(favorite.poem_id)}>Remove from favorites</button>
                         </div>
-                    }) : null}
+                    }) : null}     */}
 
 
                 {/* {currentUser.poems ?
